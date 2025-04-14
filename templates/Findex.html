@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Список посещенных городов</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            text-align: center;
+        }
+        h1 {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+        }
+        table {
+            width: 50%;
+            margin: auto;
+            border-collapse: collapse;
+            background: white;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+        }
+        form {
+            margin: 20px;
+        }
+        button {
+            background-color: #f44336;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #d32f2f;
+        }
+    </style>
+</head>
+<body>
+    <h1>Список посещенных городов</h1>
+
+    <form method="POST">
+        <input type="text" name="city" placeholder="Город" required>
+        <input type="date" name="visit_date" required>
+        <button type="submit">Добавить</button>
+    </form>
+
+    <table>
+        <tr>
+            <th>Город</th>
+            <th>Дата посещения</th>
+        </tr>
+        {% for city in cities %}
+        <tr>
+            <td>{{ city.name }}</td>
+            <td>{{ city.visit_date }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <form method="POST" action="/clear">
+        <button type="submit">Очистить список</button>
+    </form>
+</body>
+</html>
